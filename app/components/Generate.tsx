@@ -1,7 +1,7 @@
 'use client'
 
 import React, { useState } from 'react'
-import { BsPersonArmsUp } from 'react-icons/bs'
+import { BsPersonUp } from 'react-icons/bs'
 import {
   FaImage,
   FaVideo,
@@ -76,7 +76,7 @@ const FEATURES: Feature[] = [
     title: 'Motion Transfer',
     subtitle: 'Transfer motion to images and animate characters.',
     isNew: true,
-    icon: <BsPersonArmsUp size={18} />,
+    icon: <BsPersonUp size={18} />,
     iconStyle: 'bg-[#1b1d1f]'
   },
   {
