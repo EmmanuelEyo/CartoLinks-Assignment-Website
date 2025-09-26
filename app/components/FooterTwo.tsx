@@ -10,7 +10,7 @@ const FooterTwo: React.FC = () => {
 
   return (
     <footer className="w-full bg-[#222222]">
-      <div className="mx-auto md:px-6">
+      <div className="mx-auto px-5 md:px-6">
         <div className="flex items-center justify-between gap-4 py-3 sm:py-4 text-sm  sm:text-base">
           <div className="flex items-center gap-3.5 w-full sm:w-auto justify-start sm:justify-start">
             <div className="flex items-center justify-center w-12 h-12 rounded-md bg-black text-white text-sm font-semibold flex-shrink-0">
