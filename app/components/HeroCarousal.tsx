@@ -68,7 +68,7 @@ const HeroCarousel: React.FC = () => {
   }
 
   return (
-    <section aria-roledescription="carousel" aria-label="Hero carousel" className="mx-auto px-2 sm:px-4 lg:px-6 pt-20">
+    <section aria-roledescription="carousel" aria-label="Hero carousel" className="mx-auto px-2 sm:px-4 lg:px-6 pt-10 md:pt-20">
       <div className="overflow-hidden">
         <motion.div
           className="flex"

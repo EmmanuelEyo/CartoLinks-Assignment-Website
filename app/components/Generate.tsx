@@ -79,20 +79,22 @@ const Generate: React.FC = () => {
   const featuresToShow = toggle ? FEATURES : FEATURES.slice(0, 4)
 
   return (
-    <section className="mx-auto px-4 sm:px-6 pt-10">
+    <section className="mx-auto px-4 sm:px-6 pt-5">
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-lg font-semibold theme-text-primary">Generate</h2>
         <div className="flex items-center gap-1">
           {toggle ? <FaChevronDown color="#4fa0ea" style={{ 
             marginTop: '3px'
-          }} size={12} /> : <FaChevronUp color="#4fa0ea" size={12} />}
+          }} size={12} /> : <FaChevronUp color="#4fa0ea" size={12} style={{ 
+            marginTop: '3px'
+          }} />}
           <button className="text-sm text-[#4fa0ea] font-bold" type="button" onClick={toggleItem}>
-            {toggle ? 'Show less' : 'Show all'}
+            {toggle ? 'Show all' : 'Show less'}
           </button>
         </div>
       </div>
 
-      <div className="grid grid-cols-1 mt-5 gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center">
+      <div className="grid grid-cols-1 mt-1 gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center">
         {featuresToShow.map((f) => (
           <GenerationGrid
             key={f.title}
