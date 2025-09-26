@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa'
-import { motion } from 'framer-motion'
+import { motion, PanInfo } from 'framer-motion'
 import { useTheme } from '../contexts/ThemeContext'
 
 type Slide = {
@@ -32,20 +32,23 @@ const HeroCarousel: React.FC = () => {
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
   const [slidesPerView, setSlidesPerView] = useState<number>(1)
+  const [isMobile, setIsMobile] = useState<boolean>(false)
+
+  const translatePercent = slidesPerView === 1 ? 100 : 60
 
   useEffect(() => {
     const updateSlidesPerView = () => {
-      setSlidesPerView(window.innerWidth < 1024 ? 1 : 2)
+      const mobile = window.innerWidth < 1024
+      setIsMobile(mobile)
+      setSlidesPerView(mobile ? 1 : 2)
     }
     updateSlidesPerView()
     window.addEventListener('resize', updateSlidesPerView)
     return () => window.removeEventListener('resize', updateSlidesPerView)
   }, [])
 
-  // number of distinct positions/pages the carousel can be in
   const positionsCount = Math.max(1, slides.length - slidesPerView + 1)
 
-  // keep currentIndex valid when slidesPerView changes
   useEffect(() => {
     setCurrentIndex((ci) => Math.min(ci, Math.max(0, slides.length - slidesPerView)))
   }, [slidesPerView, slides.length])
@@ -56,13 +59,22 @@ const HeroCarousel: React.FC = () => {
   const goNext = () =>
     setCurrentIndex((i) => (i + 1 >= positionsCount ? 0 : i + 1))
 
+  const handleDragEnd = (event: MouseEvent | TouchEvent | PointerEvent, info: PanInfo) => {
+    const offset = info.offset.x
+    const slideWidth = window.innerWidth
+    const delta = -offset / slideWidth
+    const targetIndex = Math.round(currentIndex + delta)
+    setCurrentIndex(Math.max(0, Math.min(positionsCount - 1, targetIndex)))
+  }
+
   return (
     <section aria-roledescription="carousel" aria-label="Hero carousel" className="mx-auto px-2 sm:px-4 lg:px-6 pt-20">
       <div className="overflow-hidden">
         <motion.div
           className="flex"
-          animate={{ x: `-${currentIndex * 60}%` }}
+          animate={{ x: `-${currentIndex * translatePercent}%` }}
           transition={{ type: "spring", stiffness: 300, damping: 50 }}
+          {...(isMobile && { drag: "x", dragElastic: 0, dragConstraints: { left: -(positionsCount - 1) * window.innerWidth, right: 0 }, onDragEnd: handleDragEnd })}
         >
           {slides.map((slide, index) => (
             <div key={slide.id} className="w-full lg:w-[60%] flex-shrink-0 px-5">
@@ -106,7 +118,6 @@ const HeroCarousel: React.FC = () => {
         </motion.div>
       </div>
 
-      {/* Pagination dots: one dot per position (not per slide) */}
       <div className="flex justify-center md:mr-0 lg:mr-64 mt-3">
         {Array.from({ length: positionsCount }).map((_, p) => (
           <button
