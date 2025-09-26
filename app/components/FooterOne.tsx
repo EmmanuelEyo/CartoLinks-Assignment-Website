@@ -4,7 +4,7 @@ import React from 'react'
 import { FaCreditCard, FaSuitcase } from 'react-icons/fa'
 import { useTheme } from '../contexts/ThemeContext'
 
-const GalleryHeader: React.FC = () => {
+const FooterOne: React.FC = () => {
   useTheme()
 
   return (
@@ -34,4 +34,4 @@ const GalleryHeader: React.FC = () => {
   )
 }
 
-export default GalleryHeader
+export default FooterOne

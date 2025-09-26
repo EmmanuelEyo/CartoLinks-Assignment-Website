@@ -19,69 +19,15 @@ type Slide = {
 const HeroCarousel: React.FC = () => {
   useTheme()
   const slides: Slide[] = [
-    {
-      id: 'slide1',
-      title: 'WAN 2.2',
-      subtitle: 'Generate complex images with the brand new and powerful WAN 2.2 model. Exceptional prompt adherence and ultra-realistic textures.',
-      cta: 'Try WAN 2.2',
-      image: '/slide1.webp',
-    },
-    {
-      id: 'slide2',
-      title: 'FLUX.1 Krea',
-      subtitle: 'Were making the weights to our FLUX.1 Krea model open source. Download and run our model weights, read the technical report, or generate with it in krea image.',
-      cta: 'Discover',
-      image: '/slide2.webp',
-    },
-    {
-      id: 'slide3',
-      title: 'Slide 3',
-      subtitle: 'This is the third slide with placeholder content.',
-      cta: 'Learn More',
-      image: '/slide3.webp',
-    },
-    {
-      id: 'slide4',
-      title: 'Slide 4',
-      subtitle: 'This is the fourth slide with placeholder content.',
-      cta: 'Explore',
-      image: '/slide4.webp',
-    },
-    {
-      id: 'slide5',
-      title: 'Slide 5',
-      subtitle: 'This is the fifth slide with placeholder content.',
-      cta: 'Get Started',
-      image: '/slide5.webp',
-    },
-          {
-      id: 'slide6',
-      title: 'Slide 6',
-      subtitle: 'This is the sixth slide with placeholder content.',
-      cta: 'Get Started',
-      image: '/liquor.jpg',
-    },
-      {
-      id: 'slide7',
-      title: 'Slide 7',
-      subtitle: 'This is the seventh slide with placeholder content.',
-      cta: 'Get Started',
-      image: '/face.jpg',
-    },
-      {
-      id: 'slide8',
-      title: 'Slide 8',
-      subtitle: 'This is the eigth slide with placeholder content.',
-      cta: 'Get Started',
-      image: '/tattoo.jpg',
-    },
-      {
-      id: 'slide9',
-      title: 'Slide 9',
-      subtitle: 'This is the ninth slide with placeholder content.',
-      cta: 'Get Started',
-      image: '/windmill.jpg',
-    },
+    { id: 'slide1', title: 'WAN 2.2', subtitle: 'Generate complex images with advanced AI models.', cta: 'Try WAN 2.2', image: '/slide1.webp' },
+    { id: 'slide2', title: 'FLUX.1 Krea', subtitle: 'Cutting-edge image synthesis for creative professionals.', cta: 'Discover', image: '/slide2.webp' },
+    { id: 'slide3', title: 'Stable Diffusion XL', subtitle: 'High-resolution image generation with open-source power.', cta: 'Generate', image: '/slide3.webp' },
+    { id: 'slide4', title: 'Midjourney v6', subtitle: 'AI art creation with stunning visual quality and style.', cta: 'Create Art', image: '/slide4.webp' },
+    { id: 'slide5', title: 'DALL-E 3', subtitle: 'Transform text into detailed, imaginative images.', cta: 'Imagine', image: '/slide5.webp' },
+    { id: 'slide6', title: 'Craiyon', subtitle: 'Free AI image generator for quick and fun creations.', cta: 'Draw', image: '/liquor.jpg' },
+    { id: 'slide7', title: 'This Person Does Not Exist', subtitle: 'Generate realistic human faces with GAN technology.', cta: 'Generate Faces', image: '/face.jpg' },
+    { id: 'slide8', title: 'Artbreeder', subtitle: 'Evolve and blend images with collaborative AI.', cta: 'Breed Art', image: '/tattoo.jpg' },
+    { id: 'slide9', title: 'Runway ML', subtitle: 'AI tools for video editing and creative workflows.', cta: 'Edit Videos', image: '/windmill.jpg' },
   ]
 
   const [currentIndex, setCurrentIndex] = useState<number>(0)
@@ -96,19 +42,30 @@ const HeroCarousel: React.FC = () => {
     return () => window.removeEventListener('resize', updateSlidesPerView)
   }, [])
 
-  const goPrev = () => setCurrentIndex((i) => i - 1 < 0 ? slides.length - slidesPerView : i - 1)
-  const goNext = () => setCurrentIndex((i) => i + 1 > slides.length - slidesPerView ? 0 : i + 1)
+  // number of distinct positions/pages the carousel can be in
+  const positionsCount = Math.max(1, slides.length - slidesPerView + 1)
+
+  // keep currentIndex valid when slidesPerView changes
+  useEffect(() => {
+    setCurrentIndex((ci) => Math.min(ci, Math.max(0, slides.length - slidesPerView)))
+  }, [slidesPerView, slides.length])
+
+  const goPrev = () =>
+    setCurrentIndex((i) => (i - 1 < 0 ? positionsCount - 1 : i - 1))
+
+  const goNext = () =>
+    setCurrentIndex((i) => (i + 1 >= positionsCount ? 0 : i + 1))
 
   return (
     <section aria-roledescription="carousel" aria-label="Hero carousel" className="mx-auto px-2 sm:px-4 lg:px-6 pt-20">
       <div className="overflow-hidden">
         <motion.div
           className="flex"
-          animate={{ x: `-${currentIndex * (100 / slidesPerView)}%` }}
-          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          animate={{ x: `-${currentIndex * 60}%` }}
+          transition={{ type: "spring", stiffness: 300, damping: 50 }}
         >
           {slides.map((slide, index) => (
-            <div key={slide.id} className="w-full lg:w-[60%] flex-shrink-0 px-2">
+            <div key={slide.id} className="w-full lg:w-[60%] flex-shrink-0 px-5">
               <div className="rounded-2xl overflow-hidden relative shadow-lg">
                 <div className="relative h-64 md:h-[400px] w-full theme-bg-secondary">
                   <Image
@@ -137,7 +94,7 @@ const HeroCarousel: React.FC = () => {
                       )}
                     </div>
                     {slide.cta && (
-                      <button onClick={() => {}} className="md:inline-flex hidden items-center justify-center px-3 py-1.5 md:px-4 md:py-2 rounded-full theme-bg-primary theme-text-primary text-sm md:text-base shadow">
+                      <button onClick={() => {}} className="md:inline-flex cursor-pointer hidden items-center justify-center px-3 py-1.5 md:px-4 md:py-2 rounded-full theme-bg-primary theme-text-primary text-sm md:text-base shadow">
                         {slide.cta}
                       </button>
                     )}
@@ -148,25 +105,30 @@ const HeroCarousel: React.FC = () => {
           ))}
         </motion.div>
       </div>
-      <div className="flex justify-center md:mr-0 lg:mr-64">
-        {slides.map((s, i) => (
+
+      {/* Pagination dots: one dot per position (not per slide) */}
+      <div className="flex justify-center md:mr-0 lg:mr-64 mt-3">
+        {Array.from({ length: positionsCount }).map((_, p) => (
           <button
-            key={s.id}
-            onClick={() => setCurrentIndex(Math.max(0, Math.min(slides.length - slidesPerView, i - (slidesPerView - 1))))}
-            className={`w-2 h-2 lg:mt-2 md:mt-6 mt-3 rounded-full mx-1 ${i >= currentIndex && i < currentIndex + slidesPerView ? 'bg-black' : 'bg-gray-400'}`}
+            key={p}
+            onClick={() => setCurrentIndex(p)}
+            aria-label={`Go to slide ${p + 1}`}
+            className={`w-2 h-2 cursor-pointer lg:mt-2 md:mt-6 mt-3 rounded-full mx-1 ${p === currentIndex ? 'bg-black' : 'bg-gray-400'}`}
           />
         ))}
       </div>
-      <div className="flex justify-end md:mr-8">
-        <button onClick={goPrev} aria-label="Previous slide" className="mx-2 p-1.5 rounded-full theme-bg-secondary hover:theme-text-secondary">
+
+      <div className="flex justify-end md:mr-8 mt-3">
+        <button onClick={goPrev} aria-label="Previous slide" className="mx-2 p-1.5 cursor-pointer rounded-full theme-bg-secondary hover:theme-text-secondary">
           <FaChevronLeft size={12} />
         </button>
-        <button onClick={goNext} aria-label="Next slide" className="mx-2 p-1.5 rounded-full theme-bg-secondary hover:theme-text-secondary">
+        <button onClick={goNext} aria-label="Next slide" className="mx-2 p-1.5 cursor-pointer rounded-full theme-bg-secondary hover:theme-text-secondary">
           <FaChevronRight size={12} />
         </button>
       </div>
+
       <div className="sr-only" aria-live="polite">
-        {`Slides ${currentIndex + 1} to ${currentIndex + slidesPerView} of ${slides.length}`}
+        {`Slides ${currentIndex + 1} to ${Math.min(currentIndex + slidesPerView, slides.length)} of ${slides.length}`}
       </div>
     </section>
   )

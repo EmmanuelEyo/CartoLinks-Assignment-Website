@@ -6,10 +6,13 @@ import Navbar from "./components/Navbar";
 
 export default function Home() {
   return (
-    <div>
+    <div className="min-h-screen flex flex-col">
       <Navbar />
-      <HeroCarousel />
-      <Generate />
+      <main className="flex-1">
+        <HeroCarousel />
+        <Generate />
+      </main>
+
       <FooterOne />
       <FooterTwo />
     </div>

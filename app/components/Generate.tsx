@@ -1,89 +1,69 @@
 'use client'
 
 import React, { useState } from 'react'
-import { BsPersonUp } from 'react-icons/bs'
 import {
-  FaImage,
-  FaVideo,
   FaChevronDown,
-  FaBroadcastTower,
   FaChevronUp,
 } from 'react-icons/fa'
-import { FaWandMagicSparkles } from 'react-icons/fa6'
-import { GiMicrophone } from 'react-icons/gi'
-import { HiPencilSquare } from 'react-icons/hi2'
 import { useTheme } from '../contexts/ThemeContext'
-import { TrainIcon } from '../common/TrainIcon'
+import GenerationGrid, { Feature } from './GenerationGrid'
+import { EditIcon, Enhancer, ImageIcon, LipSync, MotionIcon, RealTime, VideoIcon } from '../common/Icons'
+import { MdModelTraining } from 'react-icons/md'
 
-type Feature = {
-  id: string
-  title: string
-  subtitle?: string
-  isNew?: boolean
-  icon: React.ReactNode
-  iconStyle?: string
-}
 
 const FEATURES: Feature[] = [
   {
-    id: 'image',
     title: 'Image',
-    subtitle: 'Generate images with custom styles in Flux and Ideogram.',
+    description: 'Generate images with custom styles in Flux and Ideogram.',
     isNew: true,
-    icon: <FaImage size={18} />,
-    iconStyle: 'bg-gradient-to-br from-[#bdcddc] via-[#7c91a3] to-[#445c71]'
+    icon: <ImageIcon className="size-6 text-white" />,
+    iconBg: 'bg-gradient-to-br from-[#bdcddc] via-[#7c91a3] to-[#445c71]'
   },
   {
-    id: 'video',
     title: 'Video',
-    subtitle: 'Generate videos with Haiku, Pika, Runway, Luma, and more.',
-    icon: <FaVideo size={18} />,
-    iconStyle: 'bg-[#f2ad17]'
+    description: 'Generate videos with Haiku, Pika, Runway, Luma, and more.',
+    icon: <VideoIcon className="size-6 text-white" />,
+    iconBg: 'bg-[#f2ad17]'
   },
   {
-    id: 'realtime',
     title: 'Realtime',
-    subtitle: 'Realtime AI rendering on a canvas. Instant feedback loops.',
-    icon: <HiPencilSquare size={18} />,
-    iconStyle: 'bg-gradient-to-br from-[#9ae4fe] via-[#45bef7] to-[#2ca7ef]'
+    description: 'Realtime AI rendering on a canvas. Instant feedback loops.',
+    icon: <RealTime className="size-6 text-white" />,
+    iconBg: 'bg-gradient-to-br from-[#9ae4fe] via-[#45bef7] to-[#2ca7ef]'
   },
   {
-    id: 'enhancer',
     title: 'Enhancer',
-    subtitle: 'Upscale and enhance images and videos up to 22K.',
+    description: 'Upscale and enhance images and videos up to 22K.',
     isNew: true,
-    icon: <FaWandMagicSparkles size={18} />,
-    iconStyle: 'bg-gradient-to-br from-[#757575] via-[#414141] to-[#0f0f0f]'
+    icon: <Enhancer className="size-6 text-white" />,
+    iconBg: 'bg-gradient-to-br from-[#757575] via-[#414141] to-[#0f0f0f]'
   },
   {
-    id: 'edit',
     title: 'Edit',
-    subtitle: 'Add objects, change style, or expand photos and generations.',
+    description: 'Add objects, change style, or expand photos and generations.',
     isNew: true,
-    icon: <FaBroadcastTower size={18} />,
-    iconStyle: 'bg-gradient-to-br from-[#957bb8] via-[#593586] to-[#11072c]'
+    icon: <EditIcon className="size-6 text-white" />,
+    iconBg: 'bg-gradient-to-br from-[#957bb8] via-[#593586] to-[#11072c]'
   },
   {
-    id: 'lipsync',
     title: 'Video Lipsync',
-    subtitle: 'Lip sync any video to any audio.',
+    description: 'Lip sync any video to any audio.',
     isNew: true,
-    icon: <GiMicrophone size={18} />,
-    iconStyle: 'bg-gradient-to-br from-[#96b494] via-[#53848b] to-[#14271b]'
+    icon: <LipSync className="size-6 text-white" />,
+    iconBg: 'bg-gradient-to-br from-[#96b494] via-[#53848b] to-[#14271b]'
   },
   {
-    id: 'motion',
     title: 'Motion Transfer',
-    subtitle: 'Transfer motion to images and animate characters.',
+    description: 'Transfer motion to images and animate characters.',
     isNew: true,
-    icon: <BsPersonUp size={18} />,
-    iconStyle: 'bg-[#1b1d1f]'
+    icon: <MotionIcon className="size-10 text-white" />,
+    iconBg: 'bg-[#1b1d1f]'
   },
   {
-    id: 'train',
     title: 'Train',
-    subtitle: 'Teach Krea to replicate your style, products, or characters.',
-    icon: <TrainIcon />,
+    description: 'Teach Krea to replicate your style, products, or characters.',
+    icon: <MdModelTraining size={24} />,
+    iconBg: '',
   },
 ]
 
@@ -102,50 +82,26 @@ const Generate: React.FC = () => {
     <section className="mx-auto px-4 sm:px-6 pt-10">
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-lg font-semibold theme-text-primary">Generate</h2>
-        <div className="flex items-end gap-1">
-          {toggle ? <FaChevronDown color="#4fa0ea" size={12} /> : <FaChevronUp color="#4fa0ea" size={12} />}
+        <div className="flex items-center gap-1">
+          {toggle ? <FaChevronDown color="#4fa0ea" style={{ 
+            marginTop: '3px'
+          }} size={12} /> : <FaChevronUp color="#4fa0ea" size={12} />}
           <button className="text-sm text-[#4fa0ea] font-bold" type="button" onClick={toggleItem}>
             {toggle ? 'Show less' : 'Show all'}
           </button>
         </div>
       </div>
 
-      <div
-        className="grid gap-2 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+      <div className="grid grid-cols-1 gap-5 lg:gap-6 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 items-center">
         {featuresToShow.map((f) => (
-          <article key={f.id} className="flex items-center justify-between gap-2 pr-3 pt-3 bg-transparent" role="group">
-            <div className="flex-shrink-0">
-              <div className={`w-8 h-8 rounded-lg ${f.iconStyle} flex items-center justify-center text-white`}>
-                {f.icon}
-              </div>
-            </div>
-
-            <div className="flex-1 min-w-0">
-              <div className="flex items-center gap-2">
-                <h3 id={`feature-${f.id}-title`} className="text-[10px] font-semibold theme-text-secondary">
-                  {f.title}
-                </h3>
-
-                {f.isNew && (
-                  <span className="inline-flex items-center text-[11px] font-medium bg-[#0761f9] text-[#ffffff] px-1.5 py-0.5 rounded-full">
-                    New
-                  </span>
-                )}
-              </div>
-
-              {f.subtitle && (
-                <p className="text-[9px] font-semibold theme-text-secondary max-w-[145px]">
-                  {f.subtitle}
-                </p>
-              )}
-            </div>
-
-            <div className="flex-shrink-0 ml-3">
-              <button type="button" className="px-3 py-1 rounded-full theme-bg-secondary text-xs theme-text-primary hover:brightness-95" aria-label={`Open ${f.title}`}>
-                Open
-              </button>
-            </div>
-          </article>
+          <GenerationGrid
+            key={f.title}
+            title={f.title}
+            description={f.description}
+            icon={f.icon}
+            iconBg={f.iconBg}
+            isNew={f.isNew}
+          />
         ))}
       </div>
 
