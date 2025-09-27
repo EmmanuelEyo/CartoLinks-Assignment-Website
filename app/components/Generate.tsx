@@ -83,13 +83,13 @@ const Generate: React.FC = () => {
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-lg font-semibold theme-text-primary">Generate</h2>
         <div className="flex items-center gap-1">
-          {toggle ? <FaChevronDown color="#4fa0ea" style={{ 
+          {toggle ? <FaChevronUp color="#4fa0ea" style={{ 
             marginTop: '3px'
-          }} size={12} /> : <FaChevronUp color="#4fa0ea" size={12} style={{ 
+          }} size={12} /> : <FaChevronDown color="#4fa0ea" size={12} style={{ 
             marginTop: '3px'
           }} />}
           <button className="text-sm text-[#4fa0ea] font-bold" type="button" onClick={toggleItem}>
-            {toggle ? 'Show all' : 'Show less'}
+            {toggle ? 'Show less' : 'Show all'}
           </button>
         </div>
       </div>

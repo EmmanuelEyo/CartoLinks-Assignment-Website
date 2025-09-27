@@ -1,12 +1,3 @@
-// type Feature = {
-//   id: string
-//   title: string
-//   subtitle?: string
-//   isNew?: boolean
-//   icon: React.ReactNode
-//   iconStyle?: string
-// }
-
 import { ReactNode } from "react";
 import { cn } from "../lib/utils";
 

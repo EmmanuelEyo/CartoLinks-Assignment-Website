@@ -130,11 +130,11 @@ const HeroCarousel: React.FC = () => {
       </div>
 
       <div className="flex justify-end md:mr-8 mt-3">
-        <button onClick={goPrev} aria-label="Previous slide" className="mx-2 p-1.5 cursor-pointer rounded-full theme-bg-secondary hover:theme-text-secondary">
-          <FaChevronLeft size={12} />
+        <button onClick={goPrev} aria-label="Previous slide" className="mx-2 p-2 cursor-pointer rounded-full theme-bg-secondary hover:theme-text-secondary">
+          <FaChevronLeft size={16} />
         </button>
-        <button onClick={goNext} aria-label="Next slide" className="mx-2 p-1.5 cursor-pointer rounded-full theme-bg-secondary hover:theme-text-secondary">
-          <FaChevronRight size={12} />
+        <button onClick={goNext} aria-label="Next slide" className="mx-2 p-2 cursor-pointer rounded-full theme-bg-secondary hover:theme-text-secondary">
+          <FaChevronRight size={16} />
         </button>
       </div>
 

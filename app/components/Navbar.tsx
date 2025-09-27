@@ -167,17 +167,12 @@ const Navbar: React.FC = () => {
                 style={{ willChange: 'opacity, transform' }}
               >
                 <div className="theme-bg-primary theme-shadow border theme-border rounded-2xl">
-                  {/* Header inside panel */}
                   <div className="flex items-center justify-between px-4 py-3">
                     <div className="flex items-center gap-3">
                       <Logo />
                       <div className="text-sm font-semibold theme-text-primary">Krea</div>
                     </div>
-                    <button
-                      onClick={() => setIsMobileMenuOpen(false)}
-                      className="p-2 rounded-md hover:theme-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2"
-                      aria-label="Close menu"
-                    >
+                    <button onClick={() => setIsMobileMenuOpen(false)} className="p-2 rounded-md hover:theme-bg-secondary focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2">
                       <FaTimes />
                     </button>
                   </div>
@@ -190,11 +185,7 @@ const Navbar: React.FC = () => {
                         key={item.id}
                         role="menuitem"
                         data-mobile-first={idx === 0 ? true : undefined}
-                        onClick={() => {
-                          setActive(item.id)
-                          setIsMobileMenuOpen(false)
-                          openButtonRef.current?.focus()
-                        }}
+                        onClick={() => { setActive(item.id); setIsMobileMenuOpen(false); openButtonRef.current?.focus()}}
                         className={cx(
                           'flex items-center gap-3 px-4 py-3 text-left text-sm w-full transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
                           active === item.id
@@ -210,19 +201,13 @@ const Navbar: React.FC = () => {
 
                     <div className="px-4 pt-2 pb-3">
                       <div className="flex gap-2">
-                        <button
-                          onClick={() => {}}
-                          className="flex-1 px-3 py-2 rounded-md text-sm font-medium hover:theme-bg-secondary focus-visible:ring-2 focus-visible:ring-offset-2"
-                        >
+                        <button onClick={() => {}} className="flex-1 px-3 py-2 rounded-md text-sm font-medium hover:theme-bg-secondary focus-visible:ring-2 focus-visible:ring-offset-2">
                           <div className="flex items-center gap-2">
                             <FaImage /> <span>Gallery</span>
                           </div>
                         </button>
 
-                        <button
-                          onClick={() => {}}
-                          className="flex-1 px-3 py-2 rounded-md text-sm font-medium hover:theme-bg-secondary focus-visible:ring-2 focus-visible:ring-offset-2"
-                        >
+                        <button onClick={() => {}} className="flex-1 px-3 py-2 rounded-md text-sm font-medium hover:theme-bg-secondary focus-visible:ring-2 focus-visible:ring-offset-2">
                           <div className="flex items-center gap-2">
                             <MdOutlineSupportAgent /> <span>Support</span>
                           </div>
@@ -269,11 +254,7 @@ const Navbar: React.FC = () => {
             <button className="px-3 py-2 rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200">
               <FaBell />
             </button>
-            <button
-              onClick={toggleTheme}
-              className="px-3 py-2 rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200"
-              title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}
-            >
+            <button onClick={toggleTheme} className="px-3 py-2 rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200" title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
               {theme === 'light' ? <MdLightMode size={16} /> : <MdDarkMode size={16} />}
             </button>
 
