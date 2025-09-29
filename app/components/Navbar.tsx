@@ -52,11 +52,11 @@ const Navbar: React.FC = () => {
       aria-pressed={!!active}
       onClick={onClick}
       className={cx(
-        'flex items-center justify-center w-10 h-8 rounded-md transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
+        'flex items-center justify-center w-10 h-8 cursor-pointer rounded-md transition-all duration-150 focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2',
         active ? 'bg-white shadow-md' : 'hover:bg-slate-100'
       )}
     >
-      <span className={cx(active && theme === 'dark' && 'text-black')}>
+      <span className={cx(active && theme === 'dark' && 'text-black', theme === 'dark' && 'hover:text-black')}>
         {children}
       </span>
     </button>
