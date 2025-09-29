@@ -53,7 +53,7 @@ export default function GenerationGrid({
       </div>
 
       <div className="flex-shrink-0 ml-0 self-center">
-        <button type="button" className="px-5 py-1 rounded-full theme-bg-secondary text-xs theme-text-primary hover:brightness-95" aria-label={`Open ${title}`}>
+        <button type="button" className="px-5 py-1 rounded-full cursor-pointer theme-bg-secondary text-xs theme-text-primary hover:brightness-95" aria-label={`Open ${title}`}>
             Open
         </button>
       </div>
