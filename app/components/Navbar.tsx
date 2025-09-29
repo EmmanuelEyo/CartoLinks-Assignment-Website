@@ -17,6 +17,7 @@ import { HiPencilSquare } from "react-icons/hi2";
 import { useTheme } from '../contexts/ThemeContext';
 import { Logo } from '../common/logo';
 import { Home } from '../common/Home';
+import Link from 'next/link';
 
 const Navbar: React.FC = () => {
   const { theme, toggleTheme } = useTheme()
@@ -124,13 +125,15 @@ const Navbar: React.FC = () => {
       <div className="px-3 sm:px-6 lg:px-8">
         <div className="h-14 flex items-center justify-between gap-4">
           <div className="flex items-center gap-3 min-w-0">
-            <div className="flex items-center justify-center theme-text-primary md:text-3xl text-xl font-bold">
-              <Logo />
+            <div className="flex items-center justify-center cursor-pointer theme-text-primary md:text-3xl text-xl font-bold">
+              <Link href="/">
+                <Logo />
+              </Link>
             </div>
 
-            <div className="hidden sm:block w-8 h-8 ml-6 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-400 ring-1 ring-white/60 dark:ring-gray-600" title="User" role="img" />
+            <div className="hidden sm:block w-7 h-7 ml-5 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-400 ring-1 ring-white/60 dark:ring-gray-600" title="User" role="img" />
 
-            <div className="hidden sm:flex items-center gap-2 min-w-0">
+            <div className="hidden sm:flex items-center cursor-pointer gap-2 min-w-0">
               <span className="text-sm font-semibold theme-text-secondary truncate">
                 benevolentnimblebat
               </span>
@@ -237,28 +240,28 @@ const Navbar: React.FC = () => {
           </div>
 
           <div className="flex items-center gap-3">
-            <div className="hidden sm:flex justify-between items-center px-3 py-2 rounded-b-xl rounded-t-xl theme-bg-secondary gap-1.5">
+            <div className="hidden sm:flex justify-between cursor-pointer items-center px-3 py-2 rounded-b-xl rounded-t-xl theme-bg-secondary gap-1.5">
               <FaImage size={16} />
-              <button className="hidden md:inline-flex items-center text-sm font-semibold theme-text-primary">
+              <button className="hidden md:inline-flex cursor-pointer items-center text-sm font-semibold theme-text-primary">
                 Gallery
               </button>
             </div>
 
-            <div className="hidden sm:flex justify-between items-center gap-1.5 px-3 py-2 rounded-b-xl rounded-t-xl theme-bg-secondary">
+            <div className="hidden sm:flex justify-between cursor-pointer items-center gap-1.5 px-3 py-2 rounded-b-xl rounded-t-xl theme-bg-secondary">
               <MdOutlineSupportAgent size={16} />
-              <button className="hidden md:inline-flex items-center text-sm font-semibold theme-text-primary">
+              <button className="hidden md:inline-flex cursor-pointer items-center text-sm font-semibold theme-text-primary">
                 Support
               </button>
             </div>
 
-            <button className="px-3 py-2 rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200">
+            <button className="px-3 py-2 cursor-pointer rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200">
               <FaBell />
             </button>
-            <button onClick={toggleTheme} className="px-3 py-2 rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200" title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
+            <button onClick={toggleTheme} className="px-3 cursor-pointer py-2 rounded-full theme-bg-secondary hover:theme-bg-tertiary transition-colors duration-200" title={`Switch to ${theme === 'light' ? 'dark' : 'light'} mode`}>
               {theme === 'light' ? <MdLightMode size={16} /> : <MdDarkMode size={16} />}
             </button>
 
-            <div className="w-8 h-8 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-400 ring-1 ring-white/60 dark:ring-gray-600" title="User" role="img"/>
+            <div className="w-7 h-7 rounded-full bg-gradient-to-br from-pink-400 via-purple-400 to-indigo-400 ring-1 ring-white/60 dark:ring-gray-600" title="User" role="img"/>
           </div>
         </div>
       </div>

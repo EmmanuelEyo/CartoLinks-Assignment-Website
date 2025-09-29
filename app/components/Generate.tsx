@@ -79,16 +79,16 @@ const Generate: React.FC = () => {
   const featuresToShow = toggle ? FEATURES : FEATURES.slice(0, 4)
 
   return (
-    <section className="mx-auto px-4 sm:px-6 pt-5">
+    <section className="mx-auto px-4 sm:px-7 pt-5">
       <div className="flex items-center justify-between mb-1">
         <h2 className="text-lg font-semibold theme-text-primary">Generate</h2>
-        <div className="flex items-center gap-1">
+        <div className="flex items-center gap-1 cursor-pointer">
           {toggle ? <FaChevronUp color="#4fa0ea" style={{ 
             marginTop: '3px'
           }} size={12} /> : <FaChevronDown color="#4fa0ea" size={12} style={{ 
             marginTop: '3px'
           }} />}
-          <button className="text-sm text-[#4fa0ea] font-bold" type="button" onClick={toggleItem}>
+          <button className="text-sm cursor-pointer text-[#4fa0ea] font-bold" type="button" onClick={toggleItem}>
             {toggle ? 'Show less' : 'Show all'}
           </button>
         </div>

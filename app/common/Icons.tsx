@@ -1,5 +1,3 @@
-import { cn } from "../lib/utils"
-
 export const Logo = ({ className = '', ...rest }) => {
   return (
     <svg
@@ -16,114 +14,6 @@ export const Logo = ({ className = '', ...rest }) => {
     >
       <path d="M8.34 1.266c1.766-.124 3.324 1.105 3.551 2.802.216 1.612-.887 3.171-2.545 3.536-.415.092-.877.066-1.317.122a4.63 4.63 0 0 0-2.748 1.34l-.008.004-.01-.001-.006-.005-.003-.009q0-.009.005-.016a.04.04 0 0 0 .007-.022 438 438 0 0 1-.01-4.541c.003-1.68 1.33-3.086 3.085-3.21"></path>
       <path d="M8.526 15.305c-2.247-.018-3.858-2.23-3.076-4.3a3.31 3.31 0 0 1 2.757-2.11c.384-.04.845-.03 1.215-.098 1.9-.353 3.368-1.806 3.665-3.657.066-.41.031-.9.128-1.335.449-2.016 2.759-3.147 4.699-2.236 1.011.476 1.69 1.374 1.857 2.447q.051.33.034.818c-.22 5.842-5.21 10.519-11.279 10.47m2.831.93a.04.04 0 0 1-.021-.02l-.001-.006.002-.006q0-.003.003-.004l.006-.003q3.458-.792 5.992-3.185.045-.042.083.007c.27.357.554.74.78 1.106a10.6 10.6 0 0 1 1.585 4.89q.037.53.023.819c-.084 1.705-1.51 3.08-3.31 3.09-1.592.01-2.992-1.077-3.294-2.597-.072-.36-.05-.858-.11-1.238q-.282-1.755-1.715-2.84zm-3.369 6.64c-1.353-.235-2.441-1.286-2.684-2.593a5 5 0 0 1-.05-.817V15.14q0-.021.016-.007c.884.786 1.814 1.266 3.028 1.346l.326.01c1.581.051 2.92 1.087 3.229 2.592.457 2.225-1.557 4.195-3.865 3.793"></path>
-    </svg>
-  )
-}
-
-export const CreditCard = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      viewBox="0 0 256 256"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      data-slot="icon"
-      fill="currentColor"
-      role="img"
-      aria-label="Credit Card"
-    >
-      <path d="M224,48H32A16,16,0,0,0,16,64V192a16,16,0,0,0,16,16H224a16,16,0,0,0,16-16V64A16,16,0,0,0,224,48ZM136,176H120a8,8,0,0,1,0-16h16a8,8,0,0,1,0,16Zm64,0H168a8,8,0,0,1,0-16h32a8,8,0,0,1,0,16ZM32,88V64H224V88Z"></path>
-    </svg>
-  )
-}
-
-export const Newspaper = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      viewBox="0 0 256 256"
-      xmlns="http://www.w3.org/2000/svg"
-      className={className}
-      data-slot="icon"
-      fill="currentColor"
-      role="img"
-      aria-label="Newspaper"
-    >
-      <path d="M216,48H56A16,16,0,0,0,40,64V184a8,8,0,0,1-16,0V88A8,8,0,0,0,8,88v96.11A24,24,0,0,0,32,208H208a24,24,0,0,0,24-24V64A16,16,0,0,0,216,48ZM176,152H96a8,8,0,0,1,0-16h80a8,8,0,0,1,0,16Zm0-32H96a8,8,0,0,1,0-16h80a8,8,0,0,1,0,16Z"></path>
-    </svg>
-  )
-}
-
-export const Avatar = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      role="img"
-      aria-label="Avatar"
-      className={cn('rounded-full', className)}
-      data-slot="icon"
-      width="128"
-      height="128"
-      viewBox="0 0 128 128"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <defs>
-        <clipPath id="circleClip">
-          <circle cx="64" cy="64" r="64" />
-        </clipPath>
-        <filter
-          id="filter_blur"
-          x="-200"
-          y="-200"
-          width="528"
-          height="528"
-          filterUnits="userSpaceOnUse"
-          colorInterpolationFilters="sRGB"
-        >
-          <feGaussianBlur stdDeviation="20" />
-        </filter>
-        <filter
-          id="blurRing"
-          x="-50"
-          y="-50"
-          width="228"
-          height="228"
-          filterUnits="userSpaceOnUse"
-        >
-          <feGaussianBlur stdDeviation="16" />
-        </filter>
-        <radialGradient id="innerShadowRing" cx="0.5" cy="0.5" r="0.4">
-          <stop offset="0.9" stopColor="rgba(255, 255, 255, 0)" />
-          <stop offset="1" stopColor="rgba(255, 255, 255, 1)" />
-        </radialGradient>
-      </defs>
-
-      <g clipPath="url(#circleClip)">
-        <rect width="128" height="128" fill="white" />
-        <g filter="url(#filter_blur)">
-          <circle cx="69" cy="33" r="78" fill="#7FDEFF" />
-        </g>
-        <g filter="url(#filter_blur)">
-          <circle cx="28" cy="42" r="87" fill="#FF90EA" />
-        </g>
-        <g filter="url(#filter_blur)">
-          <circle cx="104" cy="123" r="60" fill="#0094FF" />
-        </g>
-        <g filter="url(#filter_blur)">
-          <path d="M0 126 C99 103, 52 95, 89 77" fill="#FF90EA" />
-        </g>
-        <g filter="url(#filter_blur)">
-          <path d="M14 107 C18 112, 8 22, 100 90" fill="#8BB5FF" />
-        </g>
-        <circle
-          cx="64"
-          cy="64"
-          r="64"
-          fill="url(#innerShadowRing)"
-          filter="url(#blurRing)"
-        />
-      </g>
     </svg>
   )
 }
@@ -150,83 +40,12 @@ export const Home = ({ className = '', ...rest }) => {
   )
 }
 
-export const Moon = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      data-slot="icon"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label="Moon"
-    >
-      <g id="moon_fill" fill="none" fillRule="evenodd">
-        <path d="M24 0v24H0V0zM12.593 23.258l-.011.002-.071.035-.02.004-.014-.004-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113-.013.002-.185.093-.01.01-.003.011.018.43.005.012.008.007.201.093c.012.004.023 0 .029-.008l.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l.015-.002.201-.093.01-.008.004-.011.017-.43-.003-.012-.01-.01z"></path>
-        <path
-          fill="currentColor"
-          d="M13.574 3.138a1.01 1.01 0 0 0-1.097 1.408 6 6 0 0 1-7.931 7.931 1.01 1.01 0 0 0-1.409 1.097A9 9 0 0 0 21 12a9.001 9.001 0 0 0-7.426-8.862"
-        ></path>
-      </g>
-    </svg>
-  )
-}
 
-export const Notification = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      data-slot="icon"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 256 256"
-      fill="currentColor"
-      role="img"
-      aria-label="Notification"
-    >
-      <path d="M221.8,175.94C216.25,166.38,208,139.33,208,104a80,80,0,1,0-160,0c0,35.34-8.26,62.38-13.81,71.94A16,16,0,0,0,48,200H88.81a40,40,0,0,0,78.38,0H208a16,16,0,0,0,13.8-24.06ZM128,216a24,24,0,0,1-22.62-16h45.24A24,24,0,0,1,128,216Z"></path>
-    </svg>
-  )
-}
 
-export const Support = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      data-slot="icon"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 256 256"
-      fill="currentColor"
-      role="img"
-      aria-label="Support"
-    >
-      <path d="M204.73,51.85A108.07,108.07,0,0,0,20,128v56a28,28,0,0,0,28,28H64a28,28,0,0,0,28-28V144a28,28,0,0,0-28-28H44.84A84.05,84.05,0,0,1,128,44h.64a83.7,83.7,0,0,1,82.52,72H192a28,28,0,0,0-28,28v40a28,28,0,0,0,28,28h19.6A20,20,0,0,1,192,228H136a12,12,0,0,0,0,24h56a44.05,44.05,0,0,0,44-44V128A107.34,107.34,0,0,0,204.73,51.85ZM64,140a4,4,0,0,1,4,4v40a4,4,0,0,1-4,4H48a4,4,0,0,1-4-4V140Zm124,44V144a4,4,0,0,1,4-4h20v48H192A4,4,0,0,1,188,184Z"></path>
-    </svg>
-  )
-}
 
-export const Sun = ({ className = '', ...rest }) => {
-  return (
-    <svg
-      {...rest}
-      data-slot="icon"
-      className={className}
-      xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 24 24"
-      role="img"
-      aria-label="Sun"
-    >
-      <g id="sun_fill" fill="none">
-        <path d="M24 0v24H0V0zM12.593 23.258l-.011.002-.071.035-.02.004-.014-.004-.071-.035c-.01-.004-.019-.001-.024.005l-.004.01-.017.428.005.02.01.013.104.074.015.004.012-.004.104-.074.012-.016.004-.017-.017-.427c-.002-.01-.009-.017-.017-.018m.265-.113-.013.002-.185.093-.01.01-.003.011.018.43.005.012.008.007.201.093c.012.004.023 0 .029-.008l.004-.014-.034-.614c-.003-.012-.01-.02-.02-.022m-.715.002a.023.023 0 0 0-.027.006l-.006.014-.034.614c0 .012.007.02.017.024l.015-.002.201-.093.01-.008.004-.011.017-.43-.003-.012-.01-.01z"></path>
-        <path
-          fill="currentColor"
-          d="M12 19a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0v-1a1 1 0 0 1 1-1m6.364-2.05.707.707a1 1 0 0 1-1.414 1.414l-.707-.707a1 1 0 0 1 1.414-1.414m-12.728 0a1 1 0 0 1 1.497 1.32l-.083.094-.707.707a1 1 0 0 1-1.497-1.32l.083-.094zM12 6a6 6 0 1 1 0 12 6 6 0 0 1 0-12m-8 5a1 1 0 0 1 .117 1.993L4 13H3a1 1 0 0 1-.117-1.993L3 11zm17 0a1 1 0 1 1 0 2h-1a1 1 0 1 1 0-2zM4.929 4.929a1 1 0 0 1 1.32-.083l.094.083.707.707a1 1 0 0 1-1.32 1.497l-.094-.083-.707-.707a1 1 0 0 1 0-1.414m14.142 0a1 1 0 0 1 0 1.414l-.707.707a1 1 0 1 1-1.414-1.414l.707-.707a1 1 0 0 1 1.414 0M12 2a1 1 0 0 1 1 1v1a1 1 0 1 1-2 0V3a1 1 0 0 1 1-1"
-        ></path>
-      </g>
-    </svg>
-  )
-}
+
+
+
 
 export const VideoIcon = ({ className = '', ...rest }) => {
   return (

@@ -10,7 +10,7 @@ const FooterOne: React.FC = () => {
   return (
     <section className="w-full">
 
-      <div className="mx-auto px-4 sm:px-6 pt-5">
+      <div className="mx-auto px-4 sm:px-7 pt-5">
         <div
           className="flex items-center justify-between gap-3 py-2 sm:py-3 text-sm">
           <h3 className="text-sm sm:text-lg font-medium theme-text-primary">
